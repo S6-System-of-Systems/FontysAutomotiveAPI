@@ -1,8 +1,7 @@
 package com.fontys_automotive.api.teacher;
 
-import com.fontys_automotive.api.respones.InvalidResponse;
-import com.fontys_automotive.api.respones.Response;
-import com.fontys_automotive.api.respones.ValidResponse;
+import com.fontys_automotive.api.exceptions.BadRequestException;
+import com.fontys_automotive.api.exceptions.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,26 +20,29 @@ public class TeacherController {
     }
 
     @GetMapping("getTeachers")
-    public Response getTeachers()
+    public List<Teacher> getTeachers()
     {
-        return new ValidResponse(teacherService.getTeachers());
-
+        return teacherService.getTeachers();
     }
 
     @PostMapping("registerTeacher")
-    @ResponseBody
-    public Response registerTeacher(@RequestBody Teacher teacher)
+    public Teacher registerTeacher(@RequestBody Teacher teacher)
     {
-        teacherService.addNewTeacher(teacher);
-        Optional<Teacher> createdTeacher = teacherService.getTeacherByEmail(teacher.getEmail());
-        if(createdTeacher.isPresent())
-        {
-            return new InvalidResponse("Teacher was not successfully created");
-            //return new ValidResponse(createdTeacher);
-        }
-        else
-        {
-            return new InvalidResponse("Teacher was not successfully created");
-        }
+         Teacher newTeacher = teacherService.addNewTeacher(teacher);
+         return newTeacher;
+    }
+
+    @GetMapping("getTeacher/{email}")
+    public Teacher getTeacher(@PathVariable String email)
+    {
+         Optional<Teacher> teacher = teacherService.getTeacherByEmail(email);
+         if(teacher.isEmpty())
+         {
+             throw new NotFoundException("No teacher was found");
+         }
+         else
+         {
+             return teacher.get();
+         }
     }
 }

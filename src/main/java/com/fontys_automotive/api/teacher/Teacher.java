@@ -1,5 +1,6 @@
 package com.fontys_automotive.api.teacher;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -22,7 +23,9 @@ public class Teacher {
             generator = "teacher_sequence"
     )
 
+    @JsonIgnore
     private long id;
+
     private String firstName;
     private String lastName;
     private String email;

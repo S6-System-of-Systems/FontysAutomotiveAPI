@@ -1,11 +1,8 @@
 package com.fontys_automotive.api.teacher;
 
+import com.fontys_automotive.api.exceptions.BadRequestException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
-
-import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -29,12 +26,12 @@ public class TeacherService {
         return teacherRepository.findTeacherByEmail(email);
     }
 
-    public void addNewTeacher(Teacher teacher) {
+    public Teacher addNewTeacher(Teacher teacher) throws BadRequestException {
         Optional<Teacher> foundTeacher = teacherRepository.findTeacherByEmail(teacher.getEmail());
-        if(foundTeacher.isPresent()){
-            //response
-            throw new IllegalStateException("email taken");
+        if(foundTeacher.isPresent())
+        {
+            throw new BadRequestException("Ik krijg kanker van java");
         }
-        teacherRepository.save(teacher);
+        return teacherRepository.save(teacher);
     }
 }
