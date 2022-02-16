@@ -1,11 +1,13 @@
 package com.fontys_automotive.api.teacher;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fontys_automotive.api.project.Project;
 import lombok.Data;
 
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Set;
 import java.util.UUID;
 
 @Data
@@ -32,6 +34,8 @@ public class Teacher {
     private int teacherNo;
     private LocalDate dob;
     private String bio;
+    @ManyToMany
+    private Set<Project> joinedProjects;
 
     public Teacher(long id,
                    String firstName,
