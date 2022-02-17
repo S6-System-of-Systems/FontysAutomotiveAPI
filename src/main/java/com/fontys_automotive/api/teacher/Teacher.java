@@ -25,17 +25,14 @@ public class Teacher {
             generator = "teacher_sequence"
     )
 
-    @JsonIgnore
     private long id;
-
     private String firstName;
     private String lastName;
     private String email;
     private int teacherNo;
     private LocalDate dob;
     private String bio;
-    @ManyToMany
-    private Set<Project> joinedProjects;
+
 
     public Teacher(long id,
                    String firstName,

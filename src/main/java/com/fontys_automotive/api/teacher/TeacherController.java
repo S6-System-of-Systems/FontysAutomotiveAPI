@@ -15,24 +15,28 @@ public class TeacherController {
     private final TeacherService teacherService;
 
     @Autowired
-    public TeacherController(TeacherService _teacherService) {
+    public TeacherController(TeacherService _teacherService)
+    {
         this.teacherService = _teacherService;
     }
 
-    @GetMapping("getTeachers")
+    //Get all teachers
+    @GetMapping()
     public List<Teacher> getTeachers()
     {
         return teacherService.getTeachers();
     }
 
-    @PostMapping("registerTeacher")
+    //Create teacher
+    @PostMapping()
     public Teacher registerTeacher(@RequestBody Teacher teacher)
     {
          Teacher newTeacher = teacherService.addNewTeacher(teacher);
          return newTeacher;
     }
 
-    @GetMapping("getTeacher/{email}")
+    //Get teacher by email
+    @GetMapping("{email}")
     public Teacher getTeacher(@PathVariable String email)
     {
          Optional<Teacher> teacher = teacherService.getTeacherByEmail(email);

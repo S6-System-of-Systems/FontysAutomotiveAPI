@@ -1,6 +1,5 @@
 package com.fontys_automotive.api.project;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fontys_automotive.api.teacher.Teacher;
 import lombok.Data;
 
@@ -23,7 +22,6 @@ public class Project {
             generator = "project_sequence"
     )
 
-    @JsonIgnore
     private long id;
     private String projectTitle;
     private String projectShortDescription;

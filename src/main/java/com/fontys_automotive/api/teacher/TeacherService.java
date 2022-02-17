@@ -1,6 +1,7 @@
 package com.fontys_automotive.api.teacher;
 
 import com.fontys_automotive.api.exceptions.BadRequestException;
+import com.fontys_automotive.api.exceptions.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -26,11 +27,22 @@ public class TeacherService {
         return teacherRepository.findTeacherByEmail(email);
     }
 
+    public Optional<Teacher> getTeacherById(Long id)
+    {
+        Optional<Teacher> foundTeacher = teacherRepository.findById(id);
+        if(foundTeacher.isEmpty())
+        {
+            throw new NotFoundException("teacher not found");
+        }
+        return foundTeacher;
+    }
+
+
     public Teacher addNewTeacher(Teacher teacher) throws BadRequestException {
         Optional<Teacher> foundTeacher = teacherRepository.findTeacherByEmail(teacher.getEmail());
         if(foundTeacher.isPresent())
         {
-            throw new BadRequestException("Ik krijg kanker van java");
+            throw new BadRequestException("leraar bestaat al");
         }
         return teacherRepository.save(teacher);
     }

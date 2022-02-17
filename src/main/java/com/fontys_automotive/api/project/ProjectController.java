@@ -1,9 +1,9 @@
 package com.fontys_automotive.api.project;
 
-import com.fontys_automotive.api.teacher.Teacher;
-import com.fontys_automotive.api.teacher.TeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping(path = "project")
@@ -13,22 +13,40 @@ public class ProjectController {
     private final ProjectService projectService;
 
     @Autowired
-    public ProjectController(ProjectService projectService) {
+    public ProjectController(ProjectService projectService)
+    {
         this.projectService = projectService;
     }
 
-    @PostMapping("registerProject")
+    //Get all projects
+    @GetMapping()
+    public List<Project> getAll()
+    {
+        return projectService.getAllProjects();
+    }
+
+    //create new project
+    @PostMapping()
     public Project addProject(@RequestBody Project project)
     {
-        System.out.println("KANKER");
         Project createdProject = projectService.addProject(project);
         return createdProject;
     }
 
-    @GetMapping("getProject/{title}")
+    //Get project by title
+    @GetMapping("{title}")
     public Project getProject(@PathVariable String title) {
         Project foundProject = projectService.findProjectByTitle(title);
         return foundProject;
     }
+
+    //addTeacherToProject
+    @PostMapping("addTeacher")
+    public Project registerTeacher(@RequestParam Long teacherId, @RequestParam Long projectId)
+    {
+        Project createdProject = projectService.addTeacher(teacherId, projectId);
+        return createdProject;
+    }
+
 
 }
