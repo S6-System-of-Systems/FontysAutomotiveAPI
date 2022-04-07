@@ -23,7 +23,7 @@ public class ProjectService{
 
     public Project findProjectByTitle(String title)
     {
-        Optional<Project> foundProject = projectRepository.findProjectByProjectTitle(title);
+        Optional<Project> foundProject = projectRepository.findProjectByProjectNaam(title);
         if(foundProject.isEmpty())
         {
             throw new NotFoundException("no project found");
@@ -33,7 +33,7 @@ public class ProjectService{
 
     public Project addProject(Project project)
     {
-        Optional<Project> foundProject = projectRepository.findProjectByProjectTitleOrOrProjectShortCode(project.getProjectTitle(), project.getProjectShortCode());
+        Optional<Project> foundProject = projectRepository.findProjectByProjectNaamOrProjectCode(project.getProjectNaam(), project.getProjectCode());
         if(foundProject.isPresent())
         {
             throw new BadRequestException("Project already exists");
