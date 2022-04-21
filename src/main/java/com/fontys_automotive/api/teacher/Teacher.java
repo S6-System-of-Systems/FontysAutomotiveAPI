@@ -1,6 +1,7 @@
 package com.fontys_automotive.api.teacher;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fontys_automotive.api.inzet.Inzet;
 import com.fontys_automotive.api.project.Project;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -44,6 +45,7 @@ public class Teacher {
     @ElementCollection
     private List<String> ambitions;
     private String goals;
+    @Column(columnDefinition = "text")
     private String aboutMe;
     @ElementCollection
     private List<String> responsibilities;
@@ -61,6 +63,9 @@ public class Teacher {
     private String functie;
     private String rol;
     private String linkedIn;
+
+    @ElementCollection
+    private Set<Inzet> inzetDB;
 
 
     public Teacher(String firstName, String lastName, String username, String email, int teacherNo, LocalDate dob, String bio, List<String> currentProjects, List<String> ambitions, String goals, String aboutMe, List<String> responsibilities, List<String> skills, String overMij, String vraag, String kennis, String projecten, String opleiding, String talenten, String inzet, String functie, String rol, String linkedIn) {
