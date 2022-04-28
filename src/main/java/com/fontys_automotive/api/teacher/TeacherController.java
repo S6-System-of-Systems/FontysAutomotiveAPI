@@ -5,6 +5,7 @@ import com.fontys_automotive.api.exceptions.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.SQLOutput;
 import java.util.List;
 import java.util.Optional;
 
@@ -40,6 +41,7 @@ public class TeacherController {
     public Teacher getTeacher(@PathVariable String email)
     {
          Optional<Teacher> teacher = teacherService.getTeacherByEmail(email);
+
          if(teacher.isEmpty())
          {
              throw new NotFoundException("No teacher was found");
