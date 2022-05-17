@@ -1,7 +1,15 @@
 package com.fontys_automotive.api.tus.models.project;
 
 public class Position{
-    public Job.Function function;
-    public Job.Location location;
+    public Function function;
+    public Location location;
     public String description;
+
+    public Position(Function function, Location location, String descr) {
+        this.function = function;
+        this.location = location;
+        this.description = descr;
+    }
+
+
 }
