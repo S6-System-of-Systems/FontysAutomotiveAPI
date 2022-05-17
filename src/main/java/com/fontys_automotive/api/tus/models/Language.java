@@ -1,4 +1,4 @@
-package com.fontys_automotive.api.tus.models.teacher;
+package com.fontys_automotive.api.tus.models;
 
 public class Language {
     public Language(String language, String proficiency) {

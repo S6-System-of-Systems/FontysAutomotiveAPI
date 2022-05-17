@@ -1,5 +1,6 @@
-package com.fontys_automotive.api.tus.models.teacher;
+package com.fontys_automotive.api.tus.models;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Profile{

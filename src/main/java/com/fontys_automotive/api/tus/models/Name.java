@@ -1,4 +1,4 @@
-package com.fontys_automotive.api.tus.models.teacher;
+package com.fontys_automotive.api.tus.models;
 
 public class Name {
     public String formattedName;

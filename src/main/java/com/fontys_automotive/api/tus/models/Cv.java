@@ -1,4 +1,7 @@
-package com.fontys_automotive.api.tus.models.teacher;
+package com.fontys_automotive.api.tus;
+
+import com.fontys_automotive.api.tus.models.Person;
+import com.fontys_automotive.api.tus.models.Profile;
 
 public class Cv {
     public String id;
