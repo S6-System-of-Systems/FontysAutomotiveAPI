@@ -1,4 +1,4 @@
-package com.fontys_automotive.api.tus.models;
+package com.fontys_automotive.api.tus.models.teacher;
 
 public class Employment {
     public Organization organization;
