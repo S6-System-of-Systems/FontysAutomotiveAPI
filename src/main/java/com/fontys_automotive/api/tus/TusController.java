@@ -7,6 +7,7 @@ import com.fontys_automotive.api.teacher.TeacherService;
 import com.fontys_automotive.api.tus.models.project.*;
 import com.fontys_automotive.api.tus.models.teacher.*;
 import com.fontys_automotive.api.tus.models.teacher.Address;
+import com.fontys_automotive.api.tus.models.teacher.Person;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
