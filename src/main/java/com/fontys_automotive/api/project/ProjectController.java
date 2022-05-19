@@ -26,27 +26,27 @@ public class ProjectController {
     }
 
     //create new project
-    @PostMapping()
-    public Project addProject(@RequestBody Project project)
-    {
-        Project createdProject = projectService.addProject(project);
-        return createdProject;
-    }
+//    @PostMapping()
+//    public Project addProject(@RequestBody Project project)
+//    {
+//        Project createdProject = projectService.addProject(project);
+//        return createdProject;
+//    }
 
     //Get project by title
-    @GetMapping("{title}")
-    public Project getProject(@PathVariable String title) {
-        Project foundProject = projectService.findProjectByTitle(title);
-        return foundProject;
-    }
+//    @GetMapping("{title}")
+//    public Project getProject(@PathVariable String title) {
+//        Project foundProject = projectService.findProjectByTitle(title);
+//        return foundProject;
+//    }
 
     //addTeacherToProject
-    @PostMapping("addTeacher")
-    public Project registerTeacher(@RequestParam Long teacherId, @RequestParam Long projectId)
-    {
-        Project createdProject = projectService.addTeacher(teacherId, projectId);
-        return createdProject;
-    }
+//    @PostMapping("addTeacher")
+//    public Project registerTeacher(@RequestParam Long teacherId, @RequestParam Long projectId)
+//    {
+//        Project createdProject = projectService.addTeacher(teacherId, projectId);
+//        return createdProject;
+//    }
 
 
 }

@@ -7,6 +7,7 @@ import com.fontys_automotive.api.teacher.TeacherService;
 import com.fontys_automotive.api.tus.models.project.*;
 import com.fontys_automotive.api.tus.models.teacher.*;
 import com.fontys_automotive.api.tus.models.teacher.Address;
+import com.fontys_automotive.api.tus.models.teacher.Person;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -164,6 +165,7 @@ public class TusController {
         Job job = new Job("1234567891232342341",
         "Active",
                 false,
+                "https://www.linkedin.com/jobs/view/1605828894/",
                 "72d36bee67019db6c8d14b552cd7932d6db5a803469bb3cbd4513188bc833df1",
                 "FONTYS",
                 "2017-12-12",
