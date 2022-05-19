@@ -27,9 +27,8 @@ import java.util.stream.Collectors;
 
 public class TusController {
 
-
-    
-
+    private static final String CvUrl= "https://import.8vance.com/data_import/structured_data_import/";
+    private static final String JobUrl= "https://import.8vance.com/data_import/structured_data_import_for_job//";
     private final String token = "Token bede488d6d102a1df433467d632198d11818796a";
     private final TeacherService teacherService;
 
@@ -41,7 +40,7 @@ public class TusController {
         URL url = null;
         {
             try {
-                url = new URL("https://import.8vance.com/data_import/structured_data_import/");
+                url = new URL(CvUrl);
             } catch (MalformedURLException e) {
                 e.printStackTrace();
             }
@@ -131,7 +130,6 @@ public class TusController {
             stream.close();
 
             InputStream inputstream = new BufferedInputStream(connection.getInputStream());
-            //String result = org.apache.commons.io.IOUtils.toString(in, "UTF-8");
             result = new BufferedReader(new InputStreamReader(inputstream))
                     .lines().collect(Collectors.joining("\n"));
 
@@ -155,7 +153,7 @@ public class TusController {
         URL url = null;
         {
             try {
-                url = new URL("https://import.8vance.com/data_import/structured_data_import_for_job/");
+                url = new URL(JobUrl);
             } catch (MalformedURLException e) {
                 e.printStackTrace();
             }

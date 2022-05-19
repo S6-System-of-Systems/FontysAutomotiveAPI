@@ -1,21 +1,31 @@
 package com.fontys_automotive.api.tus.models.project;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Data;
+
+@Data
 public class Classification{
-    public int function_id;
-    public int type_id;
-    public String type_label;
-    public int category_id;
-    public String category_label;
-    public boolean full_match;
+    @JsonProperty("function_id")
+    public int functionId;
+    @JsonProperty("function_id")
+    public int typeId;
+    @JsonProperty("type_label")
+    public String typeLabel;
+    @JsonProperty("category_id")
+    public int categoryId;
+    @JsonProperty("category_label")
+    public String categoryLabel;
+    @JsonProperty("full_match")
+    public boolean fullMatch;
     public int level;
 
-    public Classification(int function_id, int type_id, String type_label, int category_id, String category_label, boolean full_match, int level) {
-        this.function_id = function_id;
-        this.type_id = type_id;
-        this.type_label = type_label;
-        this.category_id = category_id;
-        this.category_label = category_label;
-        this.full_match = full_match;
+    public Classification(int functionId, int typeId, String typeLabel, int categoryId, String categoryLabel, boolean fullMatch, int level) {
+        this.functionId = functionId;
+        this.typeId = typeId;
+        this.typeLabel = typeLabel;
+        this.categoryId = categoryId;
+        this.categoryLabel = categoryLabel;
+        this.fullMatch = fullMatch;
         this.level = level;
     }
 }

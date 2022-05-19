@@ -45,9 +45,8 @@ public class Project {
         @Column(name = "rol", nullable = true)
         private String rol;
 
-        public MyKey(String vakCode, String rol) {
-            this.vakCode = vakCode;
-            this.rol = rol;
+        public MyKey() {
+
         }
     }
 }

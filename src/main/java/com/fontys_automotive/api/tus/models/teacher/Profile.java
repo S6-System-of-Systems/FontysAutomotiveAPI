@@ -1,7 +1,9 @@
 package com.fontys_automotive.api.tus.models.teacher;
 
-import java.util.ArrayList;
+import lombok.Data;
 
+import java.util.ArrayList;
+@Data
 public class Profile{
     public String languageCode;
     public Source source;

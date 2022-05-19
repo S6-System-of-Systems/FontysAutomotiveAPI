@@ -1,5 +1,8 @@
 package com.fontys_automotive.api.tus.models.teacher;
 
+import lombok.Data;
+
+@Data
 public class Employment {
     public Organization organization;
     public String title;
