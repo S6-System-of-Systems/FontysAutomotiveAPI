@@ -1,27 +1,36 @@
 package com.fontys_automotive.api.tus.models.project;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Data;
+
+@Data
 public class Job {
-        public String customer_id;
+        @JsonProperty("customer_id")
+        public String customerId;
         public String statusCode;
-        public boolean is_processed_internally;
+        @JsonProperty("is_processed_internally")
+        public boolean isProcessedInternally;
+        public String url;
         public String id;
         public String source;
-
-        public Job(String customer_id, String statusCode, boolean is_processed_internally, String id, String source, String creation_date, String import_date, String languageCode, Position position) {
-                this.customer_id = customer_id;
-                this.statusCode = statusCode;
-                this.is_processed_internally = is_processed_internally;
-                this.id = id;
-                this.source = source;
-                this.creation_date = creation_date;
-                this.import_date = import_date;
-                this.languageCode = languageCode;
-                this.position = position;
-        }
-
-        public String creation_date;
-        public String import_date;
+        @JsonProperty("creation_date")
+        public String creationDate;
+        @JsonProperty("import_date")
+        public String importDate;
         public String languageCode;
         public Position position;
+
+        public Job(String customerId, String statusCode, boolean isProcessedInternally, String url, String id, String source, String creationDate, String import_date, String languageCode, Position position) {
+                this.customerId = customerId;
+                this.statusCode = statusCode;
+                this.isProcessedInternally = isProcessedInternally;
+                this.id = id;
+                this.source = source;
+                this.creationDate = creationDate;
+                this.importDate = import_date;
+                this.languageCode = languageCode;
+                this.position = position;
+                this.url = url;
+        }
 }
 

@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Set;
 
@@ -26,24 +27,26 @@ public class Project {
             generator = "project_sequence"
     )
 
-    private long id;
-    private String projectNaam;
-    private String projectCode;
-    private String taakNaam;
-    private String opmerking;
-    private String uren;
-    private LocalDate projectStartDate;
-    private boolean voltooid;
-    @ManyToMany
-    private Set<Teacher> involvedTeachers;
+    @EmbeddedId
+    private MyKey myKey;
 
-    public Project(String projectNaam, String taakNaam, String opmerking, String uren, LocalDate projectStartDate, boolean voltooid, Set<Teacher> involvedTeachers) {
-        this.projectNaam = projectNaam;
-        this.taakNaam = taakNaam;
-        this.opmerking = opmerking;
-        this.uren = uren;
-        this.projectStartDate = projectStartDate;
-        this.voltooid = voltooid;
-        this.involvedTeachers = involvedTeachers;
+//    private String vakCode;
+//    private String rol;
+    private String beschrijving;
+    private String url;
+
+
+    @Embeddable
+    public class MyKey implements Serializable {
+
+        @Column(name = "vakCode", nullable = false)
+        private String vakCode;
+
+        @Column(name = "rol", nullable = true)
+        private String rol;
+
+        public MyKey() {
+
+        }
     }
 }

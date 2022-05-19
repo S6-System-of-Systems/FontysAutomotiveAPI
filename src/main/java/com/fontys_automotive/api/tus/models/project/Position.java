@@ -1,5 +1,8 @@
 package com.fontys_automotive.api.tus.models.project;
 
+import lombok.Data;
+
+@Data
 public class Position{
     public Function function;
     public Location location;

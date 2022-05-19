@@ -21,26 +21,26 @@ public class ProjectService{
         this.projectRepository = projectRepository;
     }
 
-    public Project findProjectByTitle(String title)
-    {
-        Optional<Project> foundProject = projectRepository.findProjectByProjectNaam(title);
-        if(foundProject.isEmpty())
-        {
-            throw new NotFoundException("no project found");
-        }
-        return foundProject.get();
-    }
+//    public Project findProjectByTitle(String title)
+//    {
+//        Optional<Project> foundProject = projectRepository.findProjectByProjectNaam(title);
+//        if(foundProject.isEmpty())
+//        {
+//            throw new NotFoundException("no project found");
+//        }
+//        return foundProject.get();
+//    }
 
-    public Project addProject(Project project)
-    {
-        Optional<Project> foundProject = projectRepository.findProjectByProjectNaamOrProjectCode(project.getProjectNaam(), project.getProjectCode());
-        if(foundProject.isPresent())
-        {
-            throw new BadRequestException("Project already exists");
-        }
-        Project createdProject = projectRepository.save(project);
-        return createdProject;
-    }
+//    public Project addProject(Project project)
+//    {
+//        Optional<Project> foundProject = projectRepository.findProjectByProjectNaamOrProjectCode(project.getProjectNaam(), project.getProjectCode());
+//        if(foundProject.isPresent())
+//        {
+//            throw new BadRequestException("Project already exists");
+//        }
+//        Project createdProject = projectRepository.save(project);
+//        return createdProject;
+//    }
 
     public List<Project> getAllProjects()
     {
@@ -53,14 +53,14 @@ public class ProjectService{
         return projects;
     }
 
-    public Project addTeacher(Long teacherId, Long projectId) {
-        Project projectToModify = projectRepository.getById(projectId);
-        if(projectToModify == null)
-        {
-            throw new NotFoundException("project not found");
-        }
-        projectToModify.getInvolvedTeachers().add(teacherService.getTeacherById(teacherId).get());
-        Project modifiedProject = projectRepository.save(projectToModify);
-        return modifiedProject;
-    }
+//    public Project addTeacher(Long teacherId, Long projectId) {
+//        Project projectToModify = projectRepository.getById(projectId);
+//        if(projectToModify == null)
+//        {
+//            throw new NotFoundException("project not found");
+//        }
+//        projectToModify.getInvolvedTeachers().add(teacherService.getTeacherById(teacherId).get());
+//        Project modifiedProject = projectRepository.save(projectToModify);
+//        return modifiedProject;
+//    }
 }

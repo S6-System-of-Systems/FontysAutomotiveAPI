@@ -7,7 +7,9 @@ import com.fontys_automotive.api.teacher.TeacherService;
 import com.fontys_automotive.api.tus.models.project.*;
 import com.fontys_automotive.api.tus.models.teacher.*;
 import com.fontys_automotive.api.tus.models.teacher.Address;
+import com.fontys_automotive.api.tus.models.teacher.Person;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,10 +27,11 @@ import java.util.stream.Collectors;
 @RequestMapping("/tus")
 
 public class TusController {
-
-
+    @Value("${8vance.endpoint.job}")
+    private String JobUrl;
+    @Value("${8vance.endpoint.cv}")
+    private String CvUrl;
     
-
     private final String token = "Token bede488d6d102a1df433467d632198d11818796a";
     private final TeacherService teacherService;
 
@@ -40,7 +43,7 @@ public class TusController {
         URL url = null;
         {
             try {
-                url = new URL("https://import.8vance.com/data_import/structured_data_import/");
+                url = new URL(CvUrl);
             } catch (MalformedURLException e) {
                 e.printStackTrace();
             }
@@ -130,7 +133,6 @@ public class TusController {
             stream.close();
 
             InputStream inputstream = new BufferedInputStream(connection.getInputStream());
-            //String result = org.apache.commons.io.IOUtils.toString(in, "UTF-8");
             result = new BufferedReader(new InputStreamReader(inputstream))
                     .lines().collect(Collectors.joining("\n"));
 
@@ -154,7 +156,7 @@ public class TusController {
         URL url = null;
         {
             try {
-                url = new URL("https://import.8vance.com/data_import/structured_data_import_for_job/");
+                url = new URL(JobUrl);
             } catch (MalformedURLException e) {
                 e.printStackTrace();
             }
@@ -164,6 +166,7 @@ public class TusController {
         Job job = new Job("1234567891232342341",
         "Active",
                 false,
+                "https://www.linkedin.com/jobs/view/1605828894/",
                 "72d36bee67019db6c8d14b552cd7932d6db5a803469bb3cbd4513188bc833df1",
                 "FONTYS",
                 "2017-12-12",
