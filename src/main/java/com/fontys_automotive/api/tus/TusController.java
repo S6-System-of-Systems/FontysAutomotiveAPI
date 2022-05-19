@@ -164,6 +164,7 @@ public class TusController {
         Job job = new Job("1234567891232342341",
         "Active",
                 false,
+                "https://www.linkedin.com/jobs/view/1605828894/",
                 "72d36bee67019db6c8d14b552cd7932d6db5a803469bb3cbd4513188bc833df1",
                 "FONTYS",
                 "2017-12-12",
