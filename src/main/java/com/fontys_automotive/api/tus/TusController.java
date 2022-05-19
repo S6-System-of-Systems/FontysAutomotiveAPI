@@ -9,6 +9,7 @@ import com.fontys_automotive.api.tus.models.teacher.*;
 import com.fontys_automotive.api.tus.models.teacher.Address;
 import com.fontys_automotive.api.tus.models.teacher.Person;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,9 +27,11 @@ import java.util.stream.Collectors;
 @RequestMapping("/tus")
 
 public class TusController {
-
-    private static final String CvUrl= "https://import.8vance.com/data_import/structured_data_import/";
-    private static final String JobUrl= "https://import.8vance.com/data_import/structured_data_import_for_job//";
+    @Value("${8vance.endpoint.job}")
+    private String JobUrl;
+    @Value("${8vance.endpoint.cv}")
+    private String CvUrl;
+    
     private final String token = "Token bede488d6d102a1df433467d632198d11818796a";
     private final TeacherService teacherService;
 
